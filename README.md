@@ -26,7 +26,7 @@ A cinematic dark-themed novel reading platform designed for immersive storytelli
 
 ## Live Demo
 
-https://YOUR_USERNAME.github.io/YOUR_REPOSITORY_NAME/
+[https://YOUR_USERNAME.github.io/YOUR_REPOSITORY_NAME/](https://avatar-zero-ui.github.io/lumina-novel-platform/)
 
 ## Author
 

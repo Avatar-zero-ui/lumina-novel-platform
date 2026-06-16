@@ -1,0 +1,403 @@
+{
+  "design_system_profile": {
+    "name": "Dark Premium Novel Platform UI",
+    "version": "1.0.0",
+    "description": "A cinematic dark-themed content platform UI focused on immersive reading experiences, premium storytelling aesthetics, and soft-glow luxury interfaces.",
+    "core_identity": {
+      "style_keywords": [
+        "dark luxury",
+        "cinematic",
+        "editorial",
+        "immersive",
+        "minimal premium",
+        "soft neon glow",
+        "reading-focused",
+        "warm ambient lighting",
+        "high contrast typography",
+        "glassmorphism-inspired",
+        "modern media platform"
+      ],
+      "overall_feel": {
+        "mood": "Warm, mysterious, premium, immersive",
+        "visual_density": "Medium",
+        "interaction_style": "Smooth and subtle",
+        "interface_tone": "Elegant and atmospheric",
+        "ux_focus": [
+          "content immersion",
+          "discoverability",
+          "comfortable reading",
+          "visual hierarchy",
+          "low cognitive overload"
+        ]
+      }
+    },
+
+    "color_system": {
+      "base": {
+        "background_primary": "#090504",
+        "background_secondary": "#120907",
+        "background_tertiary": "#1A0E0B",
+        "surface_primary": "#18100D",
+        "surface_secondary": "#211612",
+        "surface_glass": "rgba(255,180,80,0.04)"
+      },
+      "accent": {
+        "gold_primary": "#D89A34",
+        "gold_soft": "#A56A1F",
+        "gold_glow": "rgba(216,154,52,0.35)",
+        "amber_highlight": "#E8B14C"
+      },
+      "text": {
+        "heading": "#F5EFE8",
+        "body": "#D0C2B6",
+        "muted": "#8E7D70",
+        "inactive": "#66564A"
+      },
+      "borders": {
+        "soft": "rgba(255,180,80,0.12)",
+        "active": "rgba(255,190,100,0.35)"
+      },
+      "gradients": [
+        {
+          "name": "ambient_gold",
+          "type": "radial",
+          "colors": [
+            "rgba(216,154,52,0.22)",
+            "rgba(216,154,52,0.05)",
+            "transparent"
+          ]
+        },
+        {
+          "name": "dark_depth",
+          "type": "linear",
+          "colors": [
+            "#0A0605",
+            "#120907",
+            "#090504"
+          ]
+        }
+      ]
+    },
+
+    "typography": {
+      "font_style": "Modern geometric sans-serif",
+      "heading": {
+        "weight": 700,
+        "tracking": "-0.03em",
+        "line_height": 1.05,
+        "case": "Sentence case"
+      },
+      "body": {
+        "weight": 400,
+        "line_height": 1.8,
+        "size_behavior": "Comfortable reading optimized"
+      },
+      "labels": {
+        "style": "Uppercase micro labels",
+        "tracking": "0.18em",
+        "weight": 600
+      },
+      "scale": {
+        "hero_title": "56px-72px",
+        "section_title": "36px-48px",
+        "card_title": "18px-24px",
+        "body": "15px-18px",
+        "meta": "12px-14px"
+      }
+    },
+
+    "spacing_system": {
+      "base_unit": 8,
+      "section_spacing": "64px-120px",
+      "card_padding": "20px-28px",
+      "container_padding": "32px-72px",
+      "vertical_rhythm": "Generous spacing with breathing room",
+      "layout_behavior": "Grid aligned with large visual margins"
+    },
+
+    "border_radius": {
+      "cards": "20px-28px",
+      "buttons": "14px-18px",
+      "chips": "999px",
+      "modal": "32px",
+      "input": "16px"
+    },
+
+    "shadow_system": {
+      "soft_glow": {
+        "shadow": "0 0 40px rgba(216,154,52,0.12)"
+      },
+      "elevated_card": {
+        "shadow": "0 12px 40px rgba(0,0,0,0.45)"
+      },
+      "hover_glow": {
+        "shadow": "0 0 25px rgba(255,190,100,0.18)"
+      }
+    },
+
+    "layout_patterns": {
+      "page_structure": {
+        "top_navigation": true,
+        "hero_section": true,
+        "content_grids": true,
+        "side_panels": true,
+        "sticky_reading_tools": true
+      },
+      "grid_system": {
+        "type": "Flexible card grid",
+        "columns": {
+          "desktop": "5-7",
+          "tablet": "3-4",
+          "mobile": "1-2"
+        },
+        "gap": "20px-28px"
+      },
+      "content_flow": [
+        "Hero area",
+        "Discovery sections",
+        "Scrollable content rows",
+        "Detailed content page",
+        "Immersive reader layout"
+      ]
+    },
+
+    "component_library": {
+      "navigation": {
+        "style": "Minimal top navigation",
+        "height": "72px-88px",
+        "background": "Transparent dark overlay",
+        "items": [
+          "logo",
+          "menu links",
+          "language toggle",
+          "theme toggle",
+          "profile/action icons"
+        ]
+      },
+
+      "hero_section": {
+        "layout": "Split content",
+        "left_side": [
+          "large headline",
+          "supporting text",
+          "search field",
+          "category shortcuts"
+        ],
+        "right_side": [
+          "stats cards",
+          "filters",
+          "current state indicators"
+        ],
+        "background_style": "Subtle radial glow"
+      },
+
+      "cards": {
+        "content_card": {
+          "ratio": "Portrait 2:3",
+          "structure": [
+            "cover image",
+            "overlay tags",
+            "title",
+            "metadata"
+          ],
+          "behavior": {
+            "hover_lift": true,
+            "soft_glow": true,
+            "image_zoom": "subtle"
+          }
+        },
+
+        "stat_card": {
+          "style": "Glass-dark panel",
+          "content_alignment": "Left aligned",
+          "padding": "24px",
+          "border": "Subtle gold border"
+        }
+      },
+
+      "buttons": {
+        "primary": {
+          "background": "#D89A34",
+          "text": "#120907",
+          "shape": "Rounded pill",
+          "hover": "Glow and brightness increase"
+        },
+        "secondary": {
+          "background": "rgba(255,255,255,0.04)",
+          "border": "1px solid rgba(255,190,100,0.15)",
+          "text": "#F5EFE8"
+        },
+        "icon_button": {
+          "shape": "Circular",
+          "background": "Dark translucent"
+        }
+      },
+
+      "search": {
+        "style": "Large immersive search bar",
+        "background": "Deep dark translucent",
+        "placeholder_color": "#8E7D70",
+        "icon_alignment": "Left"
+      },
+
+      "chips_and_tags": {
+        "style": "Soft glowing pills",
+        "padding": "8px 14px",
+        "border": "Subtle gold tint",
+        "font_size": "12px"
+      },
+
+      "reader_layout": {
+        "mode": "Three-panel immersive reading",
+        "left_sidebar": {
+          "purpose": "Chapter navigation",
+          "behavior": "Sticky"
+        },
+        "center_content": {
+          "max_width": "760px-920px",
+          "focus": "Readability"
+        },
+        "right_sidebar": {
+          "purpose": "Reader settings and progress",
+          "behavior": "Sticky tools panel"
+        }
+      }
+    },
+
+    "reader_experience_system": {
+      "reading_focus": {
+        "content_width": "Optimal reading column",
+        "line_height": 1.9,
+        "paragraph_spacing": "32px-48px",
+        "text_alignment": "Left aligned",
+        "font_rendering": "Smooth anti-aliased"
+      },
+      "reader_controls": [
+        "font size",
+        "theme mode",
+        "line spacing",
+        "chapter progress",
+        "table of contents"
+      ],
+      "themes": [
+        "dark",
+        "black",
+        "sepia",
+        "light"
+      ]
+    },
+
+    "interaction_design": {
+      "hover_behavior": {
+        "duration": "180ms-280ms",
+        "curve": "ease-out",
+        "effects": [
+          "translateY(-2px)",
+          "soft glow",
+          "brightness increase"
+        ]
+      },
+      "scroll_behavior": {
+        "style": "Smooth cinematic scrolling",
+        "section_reveal": "Fade + slight upward motion"
+      },
+      "transitions": {
+        "default": "all 0.25s ease"
+      }
+    },
+
+    "visual_effects": {
+      "lighting": {
+        "ambient_edge_glow": true,
+        "golden_vignette": true,
+        "soft_gradient_overlay": true
+      },
+      "background_treatment": {
+        "style": "Layered dark gradients",
+        "noise": "Very subtle",
+        "depth": "Multiple opacity layers"
+      },
+      "glass_effect": {
+        "enabled": true,
+        "blur_strength": "8px-16px"
+      }
+    },
+
+    "responsive_behavior": {
+      "mobile_strategy": {
+        "stack_sections": true,
+        "collapse_sidebars": true,
+        "reduce_spacing": true,
+        "maintain_large_typography": true
+      },
+      "tablet_strategy": {
+        "two_column_layouts": true
+      },
+      "desktop_strategy": {
+        "immersive widescreen layout": true
+      }
+    },
+
+    "animation_language": {
+      "style": "Subtle premium motion",
+      "avoid": [
+        "bouncy animation",
+        "aggressive movement",
+        "high saturation effects"
+      ],
+      "preferred": [
+        "fade",
+        "soft scaling",
+        "blur reveal",
+        "slow glow pulsing"
+      ]
+    },
+
+    "ai_replication_guidelines": {
+      "important_patterns": [
+        "Always prioritize readability over decoration",
+        "Use warm gold accents sparingly",
+        "Maintain high contrast between text and background",
+        "Avoid flat pure black backgrounds; use layered dark tones",
+        "Prefer soft shadows and ambient glows over hard outlines",
+        "Cards should feel floating and premium",
+        "Spacing should feel cinematic and breathable",
+        "Use rounded geometry consistently",
+        "UI should feel immersive rather than dashboard-like"
+      ],
+
+      "do_not_include": [
+        "bright neon cyberpunk colors",
+        "hard borders",
+        "sharp rectangular shapes",
+        "overly dense layouts",
+        "material design style elevation",
+        "highly saturated UI",
+        "cartoon styling"
+      ],
+
+      "style_formula": {
+        "core_formula": "dark_base + warm_gold_accent + soft_glow + large_typography + immersive_spacing + rounded_cards",
+        "design_ratio": {
+          "content": 70,
+          "atmosphere": 20,
+          "decoration": 10
+        }
+      }
+    },
+
+    "css_direction_hints": {
+      "background_example": "background: radial-gradient(circle at top left, rgba(216,154,52,0.18), transparent 40%), linear-gradient(to bottom, #120907, #090504);",
+      "card_example": {
+        "background": "rgba(255,255,255,0.03)",
+        "backdrop_filter": "blur(12px)",
+        "border": "1px solid rgba(255,190,100,0.12)",
+        "border_radius": "24px"
+      },
+      "hover_example": {
+        "transform": "translateY(-3px)",
+        "box_shadow": "0 0 25px rgba(216,154,52,0.16)"
+      }
+    }
+  }
+}

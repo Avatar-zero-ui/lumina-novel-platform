@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumina — Premium Novel Reading</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient ambient--tl" aria-hidden="true"></div>
+  <div class="ambient ambient--br" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <a href="#" class="nav__logo" aria-label="Lumina home">
+        <span class="nav__logo-mark">L</span>
+        <span class="nav__logo-text">Lumina</span>
+      </a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="#discover" class="nav__link">Discover</a>
+        <a href="#trending" class="nav__link">Trending</a>
+        <a href="#rankings" class="nav__link">Rankings</a>
+        <a href="#community" class="nav__link">Community</a>
+        <a href="#reader-showcase" class="nav__link">Reader</a>
+      </nav>
+      <div class="nav__actions">
+        <button type="button" class="icon-btn" id="langToggle" aria-label="Language">EN</button>
+        <button type="button" class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button type="button" class="icon-btn" id="bookmarkNav" aria-label="Bookmarks">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+          <span class="badge" id="bookmarkCount">0</span>
+        </button>
+        <button type="button" class="btn btn--primary btn--sm" id="profileBtn">Sign In</button>
+      </div>
+      <button type="button" class="nav__burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero section" id="hero">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="container hero__grid">
+        <div class="hero__content reveal">
+          <p class="label">Immersive storytelling</p>
+          <h1 class="hero__title">Lose yourself in worlds crafted for the night reader</h1>
+          <p class="hero__subtitle">Discover premium fiction with cinematic reading, curated rankings, and stories that glow in the dark.</p>
+
+          <div class="search-bar" role="search">
+            <svg class="search-bar__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input type="search" id="globalSearch" class="search-bar__input" placeholder="Search titles, authors, genres..." autocomplete="off" />
+            <button type="button" class="search-bar__filter" id="openFilters" aria-label="Open filters">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+            </button>
+          </div>
+
+          <div class="chip-row" id="categoryChips">
+            <button type="button" class="chip chip--active" data-genre="all">All</button>
+            <button type="button" class="chip" data-genre="fantasy">Fantasy</button>
+            <button type="button" class="chip" data-genre="romance">Romance</button>
+            <button type="button" class="chip" data-genre="mystery">Mystery</button>
+            <button type="button" class="chip" data-genre="sci-fi">Sci-Fi</button>
+            <button type="button" class="chip" data-genre="literary">Literary</button>
+          </div>
+        </div>
+
+        <div class="hero__aside reveal reveal--delay">
+          <div class="stat-grid">
+            <div class="stat-card">
+              <span class="stat-card__label">Stories live</span>
+              <span class="stat-card__value" data-count="12847">12,847</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__label">Readers tonight</span>
+              <span class="stat-card__value" data-count="3421">3,421</span>
+            </div>
+            <div class="stat-card stat-card--wide">
+              <span class="stat-card__label">Your reading streak</span>
+              <div class="streak">
+                <span class="streak__num" id="streakDays">7</span>
+                <span class="streak__text">days · keep the glow alive</span>
+              </div>
+              <div class="progress-bar"><div class="progress-bar__fill" id="dailyProgress" style="width: 68%"></div></div>
+            </div>
+          </div>
+
+          <div class="filter-panel glass">
+            <p class="label">Quick filters</p>
+            <div class="filter-panel__row">
+              <select id="sortSelect" class="select" aria-label="Sort by">
+                <option value="trending">Trending</option>
+                <option value="rating">Top rated</option>
+                <option value="new">New releases</option>
+                <option value="progress">Continue reading</option>
+              </select>
+              <select id="statusSelect" class="select" aria-label="Status">
+                <option value="all">All status</option>
+                <option value="ongoing">Ongoing</option>
+                <option value="completed">Completed</option>
+              </select>
+            </div>
+            <div class="filter-panel__toggles">
+              <label class="toggle"><input type="checkbox" id="filterPremium" /><span>Premium only</span></label>
+              <label class="toggle"><input type="checkbox" id="filterBookmarked" /><span>Bookmarked</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Continue Reading -->
+    <section class="section" id="continue">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <p class="label">Pick up where you left off</p>
+            <h2 class="section-title">Continue reading</h2>
+          </div>
+          <a href="#discover" class="link-arrow">View library</a>
+        </div>
+        <div class="progress-row" id="continueRow"></div>
+      </div>
+    </section>
+
+    <!-- Discover / Catalog -->
+    <section class="section" id="discover">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <p class="label">Curated for you</p>
+            <h2 class="section-title">Discover stories</h2>
+          </div>
+          <p class="section-meta" id="resultsCount">Showing 12 novels</p>
+        </div>
+        <div class="novel-grid" id="novelGrid"></div>
+      </div>
+    </section>
+
+    <!-- Trending -->
+    <section class="section section--alt" id="trending">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <p class="label">Rising this week</p>
+            <h2 class="section-title">Trending now</h2>
+          </div>
+          <div class="tab-group" role="tablist">
+            <button type="button" class="tab tab--active" data-period="week">Week</button>
+            <button type="button" class="tab" data-period="month">Month</button>
+          </div>
+        </div>
+        <div class="scroll-row" id="trendingRow"></div>
+      </div>
+    </section>
+
+    <!-- Rankings -->
+    <section class="section" id="rankings">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <p class="label">Editorial picks</p>
+            <h2 class="section-title">Top rankings</h2>
+          </div>
+        </div>
+        <div class="ranking-list" id="rankingList"></div>
+      </div>
+    </section>
+
+    <!-- AI Recommendations -->
+    <section class="section section--ai" id="ai-recs">
+      <div class="container">
+        <div class="ai-banner reveal glass">
+          <div class="ai-banner__icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a4 4 0 014 4v1h1a3 3 0 013 3v2a3 3 0 01-3 3h-1v1a4 4 0 01-8 0v-1H7a3 3 0 01-3-3V10a3 3 0 013-3h1V6a4 4 0 014-4z"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/></svg>
+          </div>
+          <div class="ai-banner__text">
+            <p class="label">Lumina intelligence</p>
+            <h2 class="section-title section-title--sm">Stories chosen for your taste</h2>
+            <p class="ai-banner__desc">Based on your reading mood, pace, and favorite genres — refreshed every session.</p>
+          </div>
+          <button type="button" class="btn btn--secondary" id="refreshAi">Refresh picks</button>
+        </div>
+        <div class="novel-grid novel-grid--compact" id="aiGrid"></div>
+      </div>
+    </section>
+
+    <!-- Immersive Reading Preview -->
+    <section class="section immersive-section" id="immersive">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <p class="label">Deep focus mode</p>
+            <h2 class="section-title">Immersive reading</h2>
+          </div>
+        </div>
+        <div class="immersive-preview reveal">
+          <div class="immersive-preview__sidebar glass">
+            <p class="label">Chapters</p>
+            <ul class="chapter-list" id="previewChapters"></ul>
+          </div>
+          <article class="immersive-preview__content">
+            <p class="immersive-preview__meta" id="previewMeta">Chapter 1 · The Ember Gate</p>
+            <div class="reading-sample" id="readingSample"></div>
+          </article>
+          <aside class="immersive-preview__tools glass">
+            <p class="label">Reader tools</p>
+            <div class="tool-group">
+              <span>Font size</span>
+              <div class="stepper" id="fontStepper">
+                <button type="button" data-action="dec">−</button>
+                <span id="fontSizeLabel">18</span>
+                <button type="button" data-action="inc">+</button>
+              </div>
+            </div>
+            <div class="tool-group">
+              <span>Theme</span>
+              <div class="theme-pills" id="readerThemes">
+                <button type="button" class="theme-pill theme-pill--active" data-theme="dark">Dark</button>
+                <button type="button" class="theme-pill" data-theme="sepia">Sepia</button>
+                <button type="button" class="theme-pill" data-theme="light">Light</button>
+              </div>
+            </div>
+            <div class="tool-group">
+              <span>Line spacing</span>
+              <input type="range" id="lineSpacing" min="1.6" max="2.2" step="0.1" value="1.9" />
+            </div>
+            <div class="tool-group">
+              <span>Chapter progress</span>
+              <div class="progress-bar progress-bar--lg">
+                <div class="progress-bar__fill" id="chapterProgress" style="width: 24%"></div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fullscreen Reader Showcase -->
+    <section class="section showcase-section" id="reader-showcase">
+      <div class="showcase__frame" id="showcaseFrame">
+        <div class="showcase__toolbar">
+          <button type="button" class="icon-btn" id="exitFullscreen" aria-label="Exit fullscreen">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+          <span class="showcase__title" id="showcaseTitle">The Ember Gate</span>
+          <button type="button" class="btn btn--primary btn--sm" id="enterFullscreen">Fullscreen read</button>
+        </div>
+        <div class="showcase__reader" id="showcaseReader">
+          <div class="showcase__glow" aria-hidden="true"></div>
+          <div class="showcase__text" id="showcaseText"></div>
+        </div>
+        <div class="showcase__controls">
+          <button type="button" class="btn btn--secondary" id="prevChapter">Previous</button>
+          <div class="showcase__dots" id="showcaseDots"></div>
+          <button type="button" class="btn btn--secondary" id="nextChapter">Next chapter</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews & Community -->
+    <section class="section section--alt" id="community">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <p class="label">Voices of readers</p>
+            <h2 class="section-title">Community & reviews</h2>
+          </div>
+        </div>
+        <div class="community-grid">
+          <div class="reviews-panel glass reveal">
+            <h3 class="panel-title">Latest reviews</h3>
+            <div class="review-list" id="reviewList"></div>
+            <form class="review-form" id="reviewForm">
+              <textarea id="reviewInput" placeholder="Share your thoughts on a story..." rows="3"></textarea>
+              <button type="submit" class="btn btn--primary">Post review</button>
+            </form>
+          </div>
+          <div class="community-previews reveal reveal--delay">
+            <h3 class="panel-title">Live discussions</h3>
+            <div class="discussion-list" id="discussionList"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="nav__logo-mark">L</span>
+        <p>Lumina — where stories breathe in the dark.</p>
+      </div>
+      <p class="footer__copy">© 2026 Lumina Reading. Crafted for immersive fiction.</p>
+    </div>
+  </footer>
+
+  <!-- Novel Detail Modal -->
+  <dialog class="modal" id="novelModal">
+    <div class="modal__inner glass">
+      <button type="button" class="modal__close" id="closeModal" aria-label="Close">&times;</button>
+      <div class="modal__layout" id="modalContent"></div>
+    </div>
+  </dialog>
+
+  <!-- Filter Drawer -->
+  <aside class="drawer" id="filterDrawer" aria-hidden="true">
+    <div class="drawer__backdrop" id="drawerBackdrop"></div>
+    <div class="drawer__panel glass">
+      <div class="drawer__header">
+        <h2>Advanced filters</h2>
+        <button type="button" class="icon-btn" id="closeDrawer" aria-label="Close">&times;</button>
+      </div>
+      <div class="drawer__body">
+        <label class="field">
+          <span>Minimum rating</span>
+          <input type="range" id="ratingMin" min="0" max="5" step="0.5" value="0" />
+          <output id="ratingMinOut">0+</output>
+        </label>
+        <label class="field">
+          <span>Word count</span>
+          <select id="lengthFilter" class="select select--full">
+            <option value="all">Any length</option>
+            <option value="short">Short (&lt; 50k)</option>
+            <option value="medium">Medium (50k–150k)</option>
+            <option value="long">Long (150k+)</option>
+          </select>
+        </label>
+        <fieldset class="field">
+          <span>Tags</span>
+          <div class="chip-row chip-row--wrap" id="tagFilters"></div>
+        </fieldset>
+        <button type="button" class="btn btn--primary btn--full" id="applyFilters">Apply filters</button>
+        <button type="button" class="btn btn--ghost btn--full" id="resetFilters">Reset all</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Bookmarks Panel -->
+  <aside class="bookmarks-panel glass" id="bookmarksPanel" aria-hidden="true">
+    <div class="bookmarks-panel__header">
+      <h2>Your bookmarks</h2>
+      <button type="button" class="icon-btn" id="closeBookmarks" aria-label="Close">&times;</button>
+    </div>
+    <ul class="bookmarks-list" id="bookmarksList"></ul>
+  </aside>
+
+  <script src="app.js"></script>
+</body>
+</html>
